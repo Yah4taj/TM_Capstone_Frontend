@@ -1,0 +1,239 @@
+/* Profile Page Styles */
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .profile-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-info h1 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .user-bio {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-email {
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .join-date {
+    font-size: 0.9rem;
+    color: var(--light-text);
+  }
+  
+  .profile-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .tab-button {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--light-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .profile-details {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  
+  .interests-section {
+    margin-bottom: 2rem;
+  }
+  
+  .interests-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .interest-tag {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+  
+  .edit-profile-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-profile-btn:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* User Groups Tab */
+  .user-groups {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  
+  .groups-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .user-group-card {
+    background-color: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .user-group-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .user-group-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .group-role {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .view-group-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-group-btn:hover {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  .no-groups {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .browse-groups-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .browse-groups-btn:hover {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .profile-info {
+      text-align: center;
+    }
+    
+    .profile-actions {
+      justify-content: center;
+    }
+    
+    .groups-list {
+      grid-template-columns: 1fr;
+    }
+  }

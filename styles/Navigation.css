@@ -1,0 +1,140 @@
+/* Navigation Styles */
+.navbar {
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-link {
+    text-decoration: none;
+  }
+  
+  .logo-link h1 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .login-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  .logout-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+  
+  .logout-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--error-color);
+  }
+  
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .avatar-container {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .username {
+    font-weight: 500;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      padding: 1rem;
+    }
+    
+    .navbar-logo {
+      margin-bottom: 1rem;
+    }
+    
+    .navbar-links {
+      width: 100%;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .nav-link, .login-btn {
+      padding: 6px 10px;
+      font-size: 15px;
+    }
+    
+    .user-menu {
+      margin-top: 10px;
+    }
+  }
