@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/Profile.css';
+import axios from 'axios';
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -13,10 +14,11 @@ const ProfilePage = () => {
     // Fetch user data and groups
     const fetchUserData = async () => {
       try {
-        'http://localhost:4000/api/user'
-        const userData = await getUserProfile();
+        const response = await axios.get('http://localhost:4000/api/user')
+        console.log(response.data);
         const userGroups = await userGroups();
         
+
         // Mock data for demonstration
         const mockUserData = {
           id: 1,
@@ -44,8 +46,8 @@ const ProfilePage = () => {
           }
         ];
         
-        setUserData(mockUserData);
-        setUserGroups(mockUserGroups);
+        setUserData(response.data);
+        // setUserGroups(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching user data:', error);

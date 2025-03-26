@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import JoinGroupForm from '../components/JoinGroupForm';
 import '../../styles/Groups.css';
+import axios from 'axios';
+
 
 const GroupDetailPage = () => {
   const { groupId } = useParams();
@@ -16,9 +18,9 @@ const GroupDetailPage = () => {
     // Fetch group details
     const fetchGroupDetails = async () => {
       try {
-        // This would be replaced with your actual API call
-        // const response = await getGroupById(groupId);
-        
+        // 
+        const response = await axios.get(`http://localhost:4000/api/studygroup/${ groupId }`)
+        console.log(response.data);
         // Mock data for demonstration
         const mockGroup = {
           id: parseInt(groupId),
@@ -96,7 +98,7 @@ const GroupDetailPage = () => {
           ]
         };
         
-        setGroup(mockGroup);
+        setGroup(response.data);
         // Check if user is a member (would be from your API)
         setIsMember(false);
         setLoading(false);
@@ -116,8 +118,8 @@ const GroupDetailPage = () => {
 
   const handleJoinSubmit = async (userData) => {
     try {
-      // This would be replaced with your actual API call
-      // await joinGroup(groupId, userData);
+      const response = await axios.get('http://localhost:4000/api/studygroup')
+        console.log(response.data);
       
       // Mock successful join
       console.log('Joining group with data:', userData);

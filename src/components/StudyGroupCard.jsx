@@ -32,7 +32,7 @@ const StudyGroupCard = ({ group }) => {
       </div>
       
       <div className="card-footer">
-        <Link to={`/groups/${group.id}`} className="view-details-btn">
+        <Link to={`/groups/${group._id}`} className="view-details-btn">
           View Details
         </Link>
       </div>

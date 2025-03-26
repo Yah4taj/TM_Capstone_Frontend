@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StudyGroupCard from '../components/StudyGroupCard';
 import '../../styles/Groups.css';
+import axios from 'axios';
 
 const StudyGroupsPage = () => {
   const [groups, setGroups] = useState([]);
@@ -13,9 +14,9 @@ const StudyGroupsPage = () => {
     // Fetch study groups from the backend
     const fetchGroups = async () => {
       try {
-        'http://localhost:4000/api/studygroup'
-        const response = await getAllGroups();
         
+        const response = await axios.get('http://localhost:4000/api/studygroup')
+        console.log(response.data);
         // Mock data for demonstration
         const mockGroups = [
           {
@@ -74,7 +75,7 @@ const StudyGroupsPage = () => {
           },
         ];
         
-        setGroups(mockGroups);
+        setGroups(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching study groups:', error);
