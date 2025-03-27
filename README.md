@@ -60,5 +60,9 @@ Study Group Finder is a platform where students can create accounts, browse avai
 - `PUT /api/studygroup/:id` - Update a study group
 - `DELETE /api/studygroup/:id` - Delete a study group
 
+Jira utilized for project planning and task management
+
 
 ## Netlify Link: 
+
+
