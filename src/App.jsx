@@ -7,6 +7,8 @@ import GroupDetailPage from './pages/GroupDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import '../styles/global.css';
 
+
+
 function App() {
   return (
     <Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CryptoCoin from '../components/Cryptocoin';
 import '../../styles/Home.css';
 
 const HomePage = () => {
@@ -8,10 +9,13 @@ const HomePage = () => {
       <section className="hero-section">
         <div className="hero-content">
           <h1>Find Your Perfect Study Group</h1>
-          <p>Connect with like-minded students, exchange knowledge, and achieve learning goals together.</p>
+          <p>Connect with like-minded students, share knowledge, and achieve your academic goals together.</p>
           <Link to="/groups" className="cta-button">Browse Study Groups</Link>
         </div>
       </section>
+
+      {/* Cryptocurrency component */}
+      <CryptoCoin />
 
       <section className="features-section">
         <h2>Why Join Our Platform?</h2>

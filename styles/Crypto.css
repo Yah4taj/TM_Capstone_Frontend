@@ -1,0 +1,119 @@
+/* Crypto Component Styles - Aligned with home.css */
+.crypto-section {
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .crypto-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .crypto-container {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .crypto-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  .crypto-single {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .crypto-single:hover {
+    transform: translateY(-3px);
+  }
+  
+  .crypto-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .crypto-name {
+    text-align: center;
+  }
+  
+  .crypto-name h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .crypto-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: var(--primary-color);
+  }
+  
+  .crypto-time {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-top: 1rem;
+  }
+  
+  .crypto-cta {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, #dddddd);
+  }
+  
+  .crypto-cta p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  .crypto-cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .crypto-cta-button:hover {
+    background-color: var(--primary-dark);
+    color: white;
+  }
+  
+  .crypto-section.loading,
+  .crypto-section.error {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--light-text);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .crypto-name h3 {
+      font-size: 1.2rem;
+    }
+    
+    .crypto-price {
+      font-size: 2rem;
+    }
+    
+    .crypto-cta p {
+      font-size: 1rem;
+    }
+  }
