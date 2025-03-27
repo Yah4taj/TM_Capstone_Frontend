@@ -11,7 +11,7 @@ Study Group Finder is a platform where students can create accounts, browse avai
 ### Prerequisites
 - Node.js (v16 or higher)
 - MongoDB
-- npm or yarn
+- npm 
 
 
 ## Usage
@@ -24,7 +24,7 @@ Study Group Finder is a platform where students can create accounts, browse avai
 
 ## Features
 
-<!-- - User authentication and profile management -->
+ User authentication and profile management 
 - Study group creation and management
 - Group membership handling
 - Resource sharing within groups
@@ -36,7 +36,7 @@ Study Group Finder is a platform where students can create accounts, browse avai
 ### Frontend
 - React
 - React Router
-- Axios
+- Fetch API/Axios
 - CSS
 
 ### Backend
