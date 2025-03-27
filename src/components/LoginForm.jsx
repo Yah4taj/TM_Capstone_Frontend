@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Forms.css';
+import '../../styles/Forms.css';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -54,6 +54,8 @@ const LoginForm = () => {
       setLoginError('');
       
       try {
+        const response = await axios.get('http://localhost:4000/api/user/login')
+        console.log(response.data);
         // This would be replaced with your actual API call
         // const response = await loginUser(formData);
         

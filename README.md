@@ -1,12 +1,64 @@
-# React + Vite
+# The Focus Hub- Study Group Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application that helps users find and join study groups based on their interests and academic goals.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Study Group Finder is a platform where students can create accounts, browse available study groups, and join groups that match their interests. Group creators can manage their groups, share resources, and schedule meetings.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v16 or higher)
+- MongoDB
+- npm or yarn
+
+
+## Usage
+
+1. Sign up for an account or log in
+2. Browse available study groups
+3. View details of a specific group
+4. Join a group by filling out the membership form
+5. Create your own study group
+
+## Features
+
+<!-- - User authentication and profile management -->
+- Study group creation and management
+- Group membership handling
+- Resource sharing within groups
+- Meeting scheduling
+- Real-time cryptocurrency information display
+
+## Technologies Used
+
+### Frontend
+- React
+- React Router
+- Axios
+- CSS
+
+### Backend
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+
+
+## API Documentation
+
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Log in a user
+
+### Study Groups
+- `GET /api/studygroup` - Get all study groups
+- `GET /api/studygroup/:id` - Get a specific study group
+- `POST /api/studygroup` - Create a new study group
+- `POST /api/studygroup/:id/join` - Join a study group
+- `PUT /api/studygroup/:id` - Update a study group
+- `DELETE /api/studygroup/:id` - Delete a study group
+
+
+## Netlify Link: 

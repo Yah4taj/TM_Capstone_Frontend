@@ -14,40 +14,17 @@ const ProfilePage = () => {
     // Fetch user data and groups
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/user')
+        // Get user data
+        const response = await axios.get('http://localhost:4000/api/user');
         console.log(response.data);
-        const userGroups = await userGroups();
         
-
-        // Mock data for demonstration
-        const mockUserData = {
-          id: 1,
-          name: 'Alex Johnson',
-          email: 'alex@example.com',
-          role: 'user',
-          bio: 'Computer Science Student',
-          avatar: null,
-          studyInterests: ['Programming', 'Data Science', 'Web Development'],
-          joinDate: '2024-01-10'
-        };
+        // Get user groups - make sure this function exists or replace with a direct API call
+        const groupsResponse = await axios.get('http://localhost:4000/api/users');
+        const userGroups = groupsResponse.data;
         
-        const mockUserGroups = [
-          {
-            id: 1,
-            name: 'Computer Science 101',
-            role: 'Member',
-            joinDate: '2024-01-15'
-          },
-          {
-            id: 4,
-            name: 'Web Development',
-            role: 'Member',
-            joinDate: '2024-02-05'
-          }
-        ];
-        
+        // Set the state with the fetched data
         setUserData(response.data);
-        // setUserGroups(response.data);
+        setUserGroups(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -55,10 +32,9 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
-
+  
     fetchUserData();
-  }, []);
-
+  }, []); // Empty dependency array means this runs once when component mounts
   const switchTab = (tab) => {
     setActiveTab(tab);
   };
