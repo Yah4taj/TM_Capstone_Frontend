@@ -48,10 +48,6 @@ Study Group Finder is a platform where students can create accounts, browse avai
 
 ## API Documentation
 
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Log in a user
-
 ### Study Groups
 - `GET /api/studygroup` - Get all study groups
 - `GET /api/studygroup/:id` - Get a specific study group
@@ -60,7 +56,12 @@ Study Group Finder is a platform where students can create accounts, browse avai
 - `PUT /api/studygroup/:id` - Update a study group
 - `DELETE /api/studygroup/:id` - Delete a study group
 
-Jira utilized for project planning and task management
+### Authentication- Future advancements- functionality for admins
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Log in a user
+
+
+Jira was utilized for project planning and task management
 
 
 ## Netlify Link: 
