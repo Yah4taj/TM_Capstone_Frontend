@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/Profile.css';
 import axios from 'axios';
+const BASE_URL=import.meta.env.VITE_API_BASE_URL
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -15,11 +16,11 @@ const ProfilePage = () => {
     const fetchUserData = async () => {
       try {
         // Get user data
-        const response = await axios.get('http://localhost:4000/api/user');
+        const response = await axios.get(`${BASE_URL}/api/studygroup`);
         console.log(response.data);
         
         // Get user groups - make sure this function exists or replace with a direct API call
-        const groupsResponse = await axios.get('http://localhost:4000/api/users');
+        const groupsResponse = await axios.get(`${BASE_URL}/api/studygroup`);
         const userGroups = groupsResponse.data;
         
         // Set the state with the fetched data
@@ -59,7 +60,7 @@ const ProfilePage = () => {
             <img src={userData.avatar} alt={`${userData.name}'s avatar`} />
           ) : (
             <div className="avatar-placeholder">
-              {userData.name.charAt(0).toUpperCase()}
+              {userData.name?.charAt(0).toUpperCase()}
             </div>
           )}
         </div>
@@ -92,7 +93,7 @@ const ProfilePage = () => {
             <div className="interests-section">
               <h2>Study Interests</h2>
               <div className="interests-container">
-                {userData.studyInterests.map((interest, index) => (
+                {userData.studyInterests?.map((interest, index) => (
                   <span key={index} className="interest-tag">{interest}</span>
                 ))}
               </div>
@@ -113,11 +114,11 @@ const ProfilePage = () => {
             {userGroups.length > 0 ? (
               <div className="groups-list">
                 {userGroups.map(group => (
-                  <div key={group.id} className="user-group-card">
+                  <div key={group._id} className="user-group-card">
                     <h3>{group.name}</h3>
                     <div className="group-role">{group.role}</div>
                     <div className="join-date">Joined: {group.joinDate}</div>
-                    <Link to={`/groups/${group.id}`} className="view-group-btn">
+                    <Link to={`/groups/${group._id}`} className="view-group-btn">
                       View Group
                     </Link>
                   </div>

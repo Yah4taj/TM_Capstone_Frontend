@@ -4,6 +4,7 @@ import JoinGroupForm from '../components/JoinGroupForm';
 import '../../styles/Groups.css';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const GroupDetailPage = () => {
   const { groupId } = useParams();
@@ -13,90 +14,13 @@ const GroupDetailPage = () => {
   const [error, setError] = useState(null);
   const [showJoinForm, setShowJoinForm] = useState(false);
   const [isMember, setIsMember] = useState(false);
-
+  
   useEffect(() => {
     // Fetch group details
     const fetchGroupDetails = async () => {
       try {
-        // 
-        const response = await axios.get(`http://localhost:4000/api/studygroup/${ groupId }`)
+        const response = await axios.get(`${BASE_URL}/api/studygroup/${groupId}`);
         console.log(response.data);
-        // Mock data for demonstration
-        const mockGroup = {
-          id: parseInt(groupId),
-          name: groupId === '1' ? 'Computer Science 101' : 
-                groupId === '2' ? 'Advanced Mathematics' : 
-                groupId === '3' ? 'Biology Research' : 
-                groupId === '4' ? 'Web Development' : 
-                groupId === '5' ? 'Physics Study Group' : 'Philosophy Discussion',
-          description: groupId === '1' ? 'Fundamentals of programming and computer science principles.' : 
-                      groupId === '2' ? 'Calculus, linear algebra, and statistics study group.' : 
-                      groupId === '3' ? 'Discussion group for biology projects and research.' :
-                      groupId === '4' ? 'Learn HTML, CSS, JavaScript and modern frameworks.' :
-                      groupId === '5' ? 'Classical mechanics, electromagnetism, and quantum physics.' :
-                      'Explore philosophical concepts and theories through texts and discussion.',
-          category: groupId === '1' ? 'Computer Science' : 
-                   groupId === '2' ? 'Mathematics' : 
-                   groupId === '3' ? 'Biology' :
-                   groupId === '4' ? 'Computer Science' :
-                   groupId === '5' ? 'Physics' : 'Philosophy',
-          memberCount: groupId === '1' ? 24 : 
-                      groupId === '2' ? 18 : 
-                      groupId === '3' ? 15 :
-                      groupId === '4' ? 30 :
-                      groupId === '5' ? 12 : 10,
-          meetingTime: groupId === '1' ? 'Tuesdays and Thursdays, 5-7 PM' : 
-                       groupId === '2' ? 'Mondays and Wednesdays, 4-6 PM' : 
-                       groupId === '3' ? 'Fridays, 3-5 PM' :
-                       groupId === '4' ? 'Saturdays, 10 AM - 1 PM' :
-                       groupId === '5' ? 'Tuesdays, 6-8 PM' : 'Thursdays, 7-9 PM',
-          location: groupId === '1' ? 'Online' : 
-                   groupId === '2' ? 'Library Room 202' : 
-                   groupId === '3' ? 'Science Building, Lab 3' :
-                   groupId === '4' ? 'Online' :
-                   groupId === '5' ? 'Physics Building, Room 105' : 'Humanities Building, Room 304',
-          createdDate: '2024-01-15',
-          members: [
-            {
-              id: 1,
-              name: 'John Doe',
-              role: 'Group Leader',
-              joinDate: '2024-01-15'
-            },
-            {
-              id: 2,
-              name: 'Jane Smith',
-              role: 'Member',
-              joinDate: '2024-01-18'
-            },
-            {
-              id: 3,
-              name: 'Alex Johnson',
-              role: 'Member',
-              joinDate: '2024-01-20'
-            }
-          ],
-          resources: [
-            {
-              id: 1,
-              title: 'Study Guide',
-              type: 'PDF',
-              link: '#'
-            },
-            {
-              id: 2,
-              title: 'Practice Problems',
-              type: 'PDF',
-              link: '#'
-            },
-            {
-              id: 3,
-              title: 'Lecture Notes',
-              type: 'Document',
-              link: '#'
-            }
-          ]
-        };
         
         setGroup(response.data);
         // Check if user is a member (would be from your API)
@@ -118,8 +42,8 @@ const GroupDetailPage = () => {
 
   const handleJoinSubmit = async (userData) => {
     try {
-      const response = await axios.get('http://localhost:4000/api/studygroup')
-        console.log(response.data);
+      const response = await axios.get('');
+      console.log(response.data);
       
       // Mock successful join
       console.log('Joining group with data:', userData);
@@ -153,12 +77,12 @@ const GroupDetailPage = () => {
           ← Back to Groups
         </button>
       </div>
-
+  
       <div className="group-header">
         <h1>{group.name}</h1>
-        <span className="category-badge">{group.category}</span>
+        <span className="category-badge">{group.subject}</span>
       </div>
-
+  
       <div className="group-content">
         <div className="group-info-section">
           <div className="group-description-card">
@@ -167,24 +91,28 @@ const GroupDetailPage = () => {
             
             <div className="group-details">
               <div className="detail-row">
+                <span className="detail-label">Meeting Date:</span>
+                <span className="detail-value"> {group.meetingSchedule?.date}</span>
+              </div>
+              <div className="detail-row">
                 <span className="detail-label">Meeting Time:</span>
-                <span className="detail-value">{group.meetingTime}</span>
+                <span className="detail-value"> {group.meetingSchedule?.time}</span>
               </div>
               <div className="detail-row">
                 <span className="detail-label">Location:</span>
-                <span className="detail-value">{group.location}</span>
+                <span className="detail-value"> {group.meetingSchedule?.location}</span>
               </div>
               <div className="detail-row">
                 <span className="detail-label">Members:</span>
-                <span className="detail-value">{group.memberCount}</span>
+                <span className="detail-value"> {group.members?.length || 0}</span>
               </div>
               <div className="detail-row">
                 <span className="detail-label">Created:</span>
-                <span className="detail-value">{group.createdDate}</span>
+                <span className="detail-value"> {group.createdAt ? new Date(group.createdAt).toLocaleDateString() : 'N/A'}</span>
               </div>
             </div>
           </div>
-
+  
           {!isMember && !showJoinForm && (
             <div className="join-section">
               <button onClick={handleJoinClick} className="join-button">
@@ -192,44 +120,52 @@ const GroupDetailPage = () => {
               </button>
             </div>
           )}
-
+  
           {showJoinForm && (
             <div className="join-form-container">
               <h2>Join {group.name}</h2>
               <JoinGroupForm onSubmit={handleJoinSubmit} />
             </div>
           )}
-
+  
           {isMember && (
             <div className="member-badge">
               <span>✓ You are a member of this group</span>
             </div>
           )}
         </div>
-
+  
         <div className="group-sidebar">
           <div className="members-section">
             <h2>Group Members</h2>
             <ul className="members-list">
-              {group.members.map(member => (
-                <li key={member.id} className="member-item">
-                  <div className="member-name">{member.name}</div>
-                  <div className="member-role">{member.role}</div>
-                </li>
-              ))}
+              {group && group.members ? (
+                group.members.map((member, index) => (
+                  <li key={member._id || member.id || `member-${index}`} className="member-item">
+                    <div className="member-name">{member.name}</div>
+                    <div className="member-role">{member.role}</div>
+                  </li>
+                ))
+              ) : (
+                <li key="no-members">No members found</li>
+              )}
             </ul>
           </div>
-
+  
           <div className="resources-section">
             <h2>Study Resources</h2>
             <ul className="resources-list">
-              {group.resources.map(resource => (
-                <li key={resource.id} className="resource-item">
-                  <a href={resource.link} className="resource-link">
-                    {resource.title} ({resource.type})
-                  </a>
-                </li>
-              ))}
+              {group && group.resources ? (
+                group.resources.map((resource, index) => (
+                  <li key={resource._id || resource.id || `resource-${index}`} className="resource-item">
+                    <a href={resource.fileUrl} className="resource-link">
+                      {resource.title} {resource.type && `(${resource.type})`}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <li key="no-resources">No resources available</li>
+              )}
             </ul>
           </div>
         </div>

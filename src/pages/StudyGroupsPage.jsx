@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import StudyGroupCard from '../components/StudyGroupCard';
 import '../../styles/Groups.css';
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const StudyGroupsPage = () => {
   const [groups, setGroups] = useState([]);
@@ -15,7 +16,7 @@ const StudyGroupsPage = () => {
     const fetchGroups = async () => {
       try {
         
-        const response = await axios.get('http://localhost:4000/api/studygroup')
+        const response = await axios.get(`${BASE_URL}/api/studygroup`)
         console.log(response.data);
         // Mock data for demonstration
         const mockGroups = [
@@ -130,8 +131,8 @@ const StudyGroupsPage = () => {
             className="category-select"
           >
             <option value="">All Categories</option>
-            {categories.filter(cat => cat !== '').map(category => (
-              <option key={category} value={category}>{category}</option>
+            {categories.filter(cat => cat !== '').map((category, index) => (
+              <option key={index} value={category}>{category}</option>
             ))}
           </select>
         </div>
@@ -140,7 +141,7 @@ const StudyGroupsPage = () => {
       <div className="groups-grid">
         {filteredGroups.length > 0 ? (
           filteredGroups.map(group => (
-            <StudyGroupCard key={group.id} group={group} />
+            <StudyGroupCard key={group._id} group={group} />
           ))
         ) : (
           <div className="no-results">
